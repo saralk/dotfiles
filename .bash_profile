@@ -1,7 +1,8 @@
 set -o vi
 
 # directory aliases
-alias ll='ls -laG'
+alias ls='ls -G'
+alias ll='ls -lG'
 alias ..='cd ..'
 alias work='cd ~/workspace'
 
@@ -11,14 +12,14 @@ alias gs='git status'
 alias pt='git push'
 alias cob='git checkout -b'
 alias gpr='git pull-request'
+alias gl='git lg'
 
-alias f='find . | grep'
+alias f='find . | grep -v node_modules | grep -v .git | grep'
 
 PATH=$PATH:~/.bin
 EDITOR=vim
 
 export NVM_DIR="$HOME/.nvm"
-export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
 [[ $- = *i* ]] && source ~/workspace/liquidprompt/liquidprompt # this loads the cool prompt
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -28,7 +29,6 @@ export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 alias cat='bat'
 alias ping='prettyping' 
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH=$PATH:/Users/kaushs02/.gvm/gos/go1.9.4/bin
 eval "$(jenv init -)"
@@ -36,3 +36,6 @@ eval "$(jenv init -)"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 [ -f ~/.local_profile ] && source ~/.local_profile
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+LP_PS1_POSTFIX="\n> "
