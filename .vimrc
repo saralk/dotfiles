@@ -5,7 +5,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-Plug 'kien/ctrlp.vim'
 Plug 'ktvoelker/sbt-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'mkitt/tabline.vim'
@@ -17,6 +16,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-rhubarb'
 Plug 'vim-ruby/vim-ruby'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 syntax on
@@ -63,5 +64,4 @@ nmap <c-t> :TagbarToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+nnoremap <C-p> :Files<Cr>
