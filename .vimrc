@@ -18,6 +18,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 syntax on
@@ -61,7 +62,10 @@ set cmdheight=2
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 nmap <c-t> :TagbarToggle<CR>
+nmap <c-g> :GitGutterLineHighlightsToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
 nnoremap <C-p> :Files<Cr>
+
+highlight clear SignColumn
