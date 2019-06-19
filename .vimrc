@@ -19,7 +19,12 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'jremmen/vim-ripgrep'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 call plug#end()
+
+map <C-n> :NERDTreeTabsToggle<CR>
 
 syntax on
 filetype plugin indent on
@@ -28,12 +33,6 @@ set background=light
 colorscheme solarized
 
 let g:airline_solarized_bg='light'
-
-map <C-n> :NERDTreeToggle<CR>
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -58,14 +57,18 @@ set ruler
 set laststatus=2
 set confirm
 set cmdheight=2
+set mouse=a
 
 autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+vmap <c-c> "+y
 
 nmap <c-t> :TagbarToggle<CR>
 nmap <c-g> :GitGutterLineHighlightsToggle<CR>
 
 autocmd QuickFixCmdPost *grep* cwindow
 
-nnoremap <C-p> :Files<Cr>
-
 highlight clear SignColumn
+
+let g:rg_derive_root = 1
+nnoremap <C-p> :Files<Cr>

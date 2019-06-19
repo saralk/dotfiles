@@ -39,3 +39,5 @@ eval "$(jenv init -)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 LP_PS1_POSTFIX="\n> "
+
+export BAT_THEME="GitHub"
