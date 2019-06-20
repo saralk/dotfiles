@@ -29,7 +29,12 @@ map <C-n> :NERDTreeTabsToggle<CR>
 syntax on
 filetype plugin indent on
 
-set background=light
+if $ITERM_PROFILE == 'dark'
+    set background=dark
+else
+    set background=light
+endif
+
 colorscheme solarized
 
 let g:airline_solarized_bg='light'
@@ -71,4 +76,4 @@ autocmd QuickFixCmdPost *grep* cwindow
 highlight clear SignColumn
 
 let g:rg_derive_root = 1
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :GFiles<Cr>
