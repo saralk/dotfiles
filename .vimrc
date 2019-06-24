@@ -25,6 +25,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 call plug#end()
 
 map <C-n> :NERDTreeTabsToggle<CR>
+map <C-m> :NERDTreeTabsFind<CR>
 
 syntax on
 filetype plugin indent on

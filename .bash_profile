@@ -20,10 +20,16 @@ PATH=$PATH:~/.bin
 EDITOR=vim
 LP_PS1_POSTFIX="\n> "
 
-export BAT_THEME="GitHub"
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH=$PATH:/Users/kaushs02/.gvm/gos/go1.9.4/bin
 export NVM_DIR="$HOME/.nvm"
+
+if [ $ITERM_PROFILE = "dark" ]
+then
+    export BAT_THEME="1337"
+else
+    export BAT_THEME="GitHub"
+fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
