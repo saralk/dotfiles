@@ -19,18 +19,18 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'yegappan/grep'
 Plug 'evanleck/vim-svelte'
 Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'w0rp/ale'
 Plug 'vim-test/vim-test'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vimwiki/vimwiki'
 Plug 'vim-test/vim-test'
 Plug 'github/copilot.vim', {'branch': 'release'}
 Plug 'mhinz/vim-grepper'
+Plug 'altercation/vim-colors-solarized'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 call plug#end()
 
 map <C-n> :NERDTreeTabsToggle<CR> 
@@ -38,10 +38,8 @@ let g:nerdtree_tabs_autofind=1
 
 syntax on
 filetype plugin indent on
-
-let g:airline_solarized_bg='light'
+set background=light
 colorscheme solarized
-
 
 set number
 map <c-k> :set number!<CR>
@@ -94,11 +92,13 @@ let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
-let g:ale_linters = {'svelte': ['stylelint', 'eslint'], 'javascript': ['standard']}
-let g:ale_fixers = {'svelte': ['eslint', 'prettier', 'prettier_standard'], 'javascript': ['standard']}
+let g:ale_linters = {'svelte': ['stylelint', 'eslint'], 'javascript': ['prettier']}
+let g:ale_fixers = {'svelte': ['eslint', 'prettier', 'prettier_standard'], 'javascript': ['prettier']}
 
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
+
+let g:TerminusFocusReporting=0
