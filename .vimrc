@@ -92,7 +92,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
-let g:ale_linters = {'svelte': ['stylelint', 'eslint'], 'javascript': ['prettier']}
+let g:ale_linters = {'svelte': ['stylelint', 'eslint'], 'javascript': ['prettier', 'flow-language-server']}
 let g:ale_fixers = {'svelte': ['eslint', 'prettier', 'prettier_standard'], 'javascript': ['prettier']}
 
 let g:vimwiki_list = [{'path': '~/vimwiki/',
@@ -102,3 +102,5 @@ let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
 let g:TerminusFocusReporting=0
+
+packloadall
