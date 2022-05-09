@@ -1,5 +1,5 @@
 if [ ! -f ~/antigen.zsh ]; then
-  curl -L git.io/antigen > antigen.zsh
+  curl -L git.io/antigen > ~/antigen.zsh
 fi
 
 source ~/antigen.zsh
