@@ -6,12 +6,13 @@ source ~/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle nojhan/liquidprompt
 antigen bundle git
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme cloud
 
 antigen apply
 
@@ -23,6 +24,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 EDITOR=vim
+set -o vi
 
 alias ls='ls -G'
 alias ll='ls -lG'
