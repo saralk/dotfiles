@@ -14,6 +14,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme cloud
 
+plugins=(
+  zsh-npm-scripts-autocomplete
+)
+
 antigen apply
 
 export NVM_DIR="$HOME/.nvm"
@@ -39,8 +43,49 @@ alias cob='git checkout -b'
 alias gl='git lg'
 alias f='find . | grep -v node_modules | grep -v .git | grep'
 alias vim='nvim'
-alias deploy2dev='gh workflow run publish-to-dev.yaml --ref `git branch --show-current`'
 
 if whence -w gds | grep "alias"; then
   unalias gds
 fi
+
+search_up() {
+    local look=${PWD%/}
+
+    while [[ -n $look ]]; do
+        [[ -e $look/$1 ]] && {
+            printf '%s\n' "$look"
+            return
+        }
+
+        look=${look%/*}
+    done
+
+    [[ -e /$1 ]] && echo /
+}
+
+deploy2dev() {
+  dir=$(search_up .saral.json)
+  json_path="${dir}/.saral.json"
+
+  if [ -f $FILE ]; then
+    workflow=$(cat $json_path | jq -r 'if has("deployWorkflow") then .deployWorkflow else "publish-to-dev.yaml" end')
+  else
+    workflow="publish-to-dev.yaml"
+  fi
+
+  gh workflow run $workflow --ref `git branch --show-current`
+}
+
+
+function aws_logs {
+  selected_item=$(gds aws di-account-dev aws logs describe-log-groups | jq ".logGroups[].logGroupName" -r | fzf)
+
+  if [[ -n $selected_item ]]; then
+    gds aws di-account-dev aws logs tail $selected_item --follow
+  else
+    echo "No log group selected"
+  fi
+}
+
+# Created by `pipx` on 2024-05-23 12:55:06
+export PATH="$PATH:/Users/saral.kaushik/.local/bin"
