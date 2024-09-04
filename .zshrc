@@ -63,19 +63,27 @@ search_up() {
     [[ -e /$1 ]] && echo /
 }
 
-deploy2dev() {
+get_saral_config() {
   dir=$(search_up .saral.json)
   json_path="${dir}/.saral.json"
 
-  if [ -f $FILE ]; then
-    workflow=$(cat $json_path | jq -r 'if has("deployWorkflow") then .deployWorkflow else "publish-to-dev.yaml" end')
-  else
-    workflow="publish-to-dev.yaml"
+  if [ -f $json_path ]; then
+    parameter=$1
+    default=$2
+    workflow=$(cat $json_path | jq -r "if has(\"${parameter}\") then .${parameter} else \"${default}\" end")
+  else 
+    echo "no .saral.json file found"
+    exit 0
   fi
+
+  echo $workflow
+}
+
+deploy2dev() {
+  workflow=$(get_saral_config deployWorkflow publish-to-dev.yaml)
 
   gh workflow run $workflow --ref `git branch --show-current`
 }
-
 
 function aws_logs {
   selected_item=$(gds aws di-account-dev aws logs describe-log-groups | jq ".logGroups[].logGroupName" -r | fzf)

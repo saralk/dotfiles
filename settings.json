@@ -1,0 +1,26 @@
+{
+    "workbench.colorTheme": "Quiet Light",
+    "githubPullRequests.pullBranch": "never",
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": [
+        "typescript",
+        "javascript"
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "yaml.schemas": {
+
+    },
+    "yaml.schemaStore.enable": false,
+    "yaml.format.enable": false,
+    "yaml.validate": false,
+    "githubPullRequests.terminalLinksHandler": "github",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "terminal.integrated.scrollback": 50000,
+    "eslint.codeActionsOnSave.rules": null,
+}
